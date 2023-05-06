@@ -4,8 +4,9 @@ import { AudioFilled } from "@ant-design/icons";
 import { useDebounce } from "./utils/useDebounce";
 import { useUserFeedbackContext } from "./provider/user-feedback/user-feedback";
 import "./styles.scss";
+import dynamic from "next/dynamic";
 
-export default function Home() {
+function Home() {
   const [phrase, setPhrase] = useState<string>("");
   const [priority, setPriority] = useState<string>("");
 
@@ -127,3 +128,7 @@ export default function Home() {
     </main>
   );
 }
+
+export default dynamic(() => Promise.resolve(Home), {
+  ssr: false,
+});
