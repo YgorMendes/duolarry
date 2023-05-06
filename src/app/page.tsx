@@ -1,95 +1,129 @@
-import Image from 'next/image'
-import styles from './page.module.css'
+"use client";
+import { useEffect, useState } from "react";
+import { AudioFilled } from "@ant-design/icons";
+import { useDebounce } from "./utils/useDebounce";
+import { useUserFeedbackContext } from "./provider/user-feedback/user-feedback";
+import "./styles.scss";
 
 export default function Home() {
+  const [phrase, setPhrase] = useState<string>("");
+  const [priority, setPriority] = useState<string>("");
+
+  const phraseDebounced = useDebounce(phrase, 1000);
+
+  const { setIsOpen, setMessage, setType } = useUserFeedbackContext();
+
+  function onSubmit(e: any) {
+    e.preventDefault();
+    const currentPhrasesStore: any = localStorage.getItem("phrases");
+    const currentPhrases: any = JSON.parse(currentPhrasesStore);
+
+    const priorityForm = e.target.priority.value;
+    const itemPhrase = { text: phraseDebounced, priority: priorityForm };
+
+    if (currentPhrases) {
+      localStorage.setItem(
+        "phrases",
+        JSON.stringify([...currentPhrases, itemPhrase])
+      );
+    } else {
+      localStorage.setItem("phrases", JSON.stringify([itemPhrase]));
+    }
+    setIsOpen(true);
+    setMessage("Frase cadastrada com sucesso!");
+    setType("success");
+
+    setTimeout(() => {
+      setPhrase("");
+    }, 2500);
+  }
+
+  const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
+  recognition.lang = "en-US";
+
+  function onRecognitionStart() {
+    recognition.start();
+  }
+
+  function onRecognitionStop() {
+    recognition.stop();
+  }
+
+  recognition.addEventListener("result", (event) => {
+    const result = event.results[0][0].transcript;
+    setPhrase(result);
+  });
+
   return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
+    <main className="contant home">
+      <div>
+        <h1>Cadastrar frase</h1>
+
+        <div className="home_create-phrase">
+          <textarea
+            className="home_textarea"
+            value={phrase}
+            onChange={(e) => setPhrase(e.currentTarget.value)}
+          />
+
+          <form className="home_priority" onSubmit={onSubmit}>
+            <input
+              type="radio"
+              name="priority"
+              id="low"
+              value={0}
+              onChange={(e) => {
+                setPriority(e.target.value);
+              }}
             />
-          </a>
+            <label className="home_label" htmlFor="low">
+              Baixa
+            </label>
+            <input
+              type="radio"
+              name="priority"
+              id="medium"
+              value={1}
+              onChange={(e) => {
+                setPriority(e.target.value);
+              }}
+            />
+            <label className="home_label" htmlFor="medium">
+              Média
+            </label>
+            <input
+              type="radio"
+              name="priority"
+              id="hight"
+              value={2}
+              onChange={(e) => {
+                setPriority(e.target.value);
+              }}
+            />
+            <label className="home_label" htmlFor="hight">
+              Alta
+            </label>
+
+            <button
+              type="submit"
+              disabled={phraseDebounced && priority ? false : true}
+              className="home_button btn"
+            >
+              Criar
+            </button>
+          </form>
         </div>
       </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
+      <div className="home_audio">
+        <button
+          className="home_button-audio btn"
+          onMouseDown={onRecognitionStart}
+          onMouseUp={onRecognitionStop}
         >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
-
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
+          <AudioFilled />
+        </button>
       </div>
     </main>
-  )
+  );
 }

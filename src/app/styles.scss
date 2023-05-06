@@ -1,0 +1,56 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 48px);
+
+  input[type="radio"] {
+    cursor: pointer;
+    accent-color: #e7c29a;
+  }
+
+  .home_create-phrase {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .home_textarea {
+      width: auto;
+      min-height: 80px;
+      padding: 12px;
+    }
+
+    .home_label {
+      margin: 0 16px 0 8px;
+      cursor: pointer;
+    }
+
+    .home_priority {
+      margin-top: 20px;
+    }
+
+    .home_button {
+      margin-top: 32px;
+    }
+  }
+
+  .home_audio {
+    height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--bg-dark);
+
+    .home_button-audio {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: red;
+
+      &:active {
+        box-shadow: 0px 0px 20px 0px rgba(237, 40, 40, 1);
+      }
+    }
+  }
+}
