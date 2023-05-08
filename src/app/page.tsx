@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { AudioFilled } from "@ant-design/icons";
 import { useDebounce } from "./utils/useDebounce";
 import { useUserFeedbackContext } from "./provider/user-feedback/user-feedback";
@@ -58,7 +58,7 @@ function Home() {
   return (
     <main
       className="contant home"
-      style={{ height: `${window.innerHeight}px` }}
+      style={{ height: `calc(${window.innerHeight}px - 64px)` }}
     >
       <div>
         <h1 className="title">Cadastrar frase</h1>

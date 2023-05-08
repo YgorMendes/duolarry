@@ -1,4 +1,4 @@
-import { SiderMenu } from "./components";
+import { Header } from "./components";
 import "./globals.scss";
 import { UserFeedbackProvider } from "./provider/user-feedback/user-feedback";
 
@@ -16,6 +16,7 @@ export default function RootLayout({
     <html lang="pt-BR">
       <body>
         <UserFeedbackProvider>
+          <Header />
           <div className="layout">{children}</div>
         </UserFeedbackProvider>
       </body>

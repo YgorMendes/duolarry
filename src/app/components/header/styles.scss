@@ -1,0 +1,18 @@
+.header {
+  width: auto;
+  height: 64px;
+  padding: 0 24px;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  background-color: var(--bg-dark);
+
+  .logo {
+    font-size: 18px;
+    font-weight: 600;
+    width: fit-content;
+    background: var(--primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
