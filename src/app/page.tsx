@@ -56,9 +56,12 @@ function Home() {
   });
 
   return (
-    <main className="contant home">
+    <main
+      className="contant home"
+      style={{ height: `${window.innerHeight}px` }}
+    >
       <div>
-        <h1>Cadastrar frase</h1>
+        <h1 className="title">Cadastrar frase</h1>
 
         <div className="home_create-phrase">
           <textarea

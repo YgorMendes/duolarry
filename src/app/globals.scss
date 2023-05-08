@@ -27,7 +27,7 @@ body {
 
 .contant {
   width: 100%;
-  padding: 24px;
+  padding: 0 24px;
 }
 
 .btn {
@@ -49,4 +49,8 @@ body {
     cursor: not-allowed;
     background: #a7a29d;
   }
+}
+
+.title {
+  margin: 96px 0 32px 0 !important;
 }
