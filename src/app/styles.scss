@@ -17,6 +17,11 @@
       width: auto;
       min-height: 80px;
       padding: 12px;
+      resize: none;
+
+      &:focus {
+        outline-color: #d2ae88;
+      }
     }
 
     .home_label {

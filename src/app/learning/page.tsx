@@ -4,7 +4,7 @@ import { Suspense } from "react";
 export default function Learning() {
   return (
     <Suspense>
-      <main className="contant">Learning</main>;
+      <main className="contant">Learning</main>
     </Suspense>
   );
 }

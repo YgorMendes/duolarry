@@ -31,7 +31,7 @@ function Home() {
       localStorage.setItem("phrases", JSON.stringify([itemPhrase]));
     }
     setIsOpen(true);
-    setMessage("Frase cadastrada com sucesso!");
+    setMessage("Frase cadastrada!");
     setType("success");
 
     setTimeout(() => {

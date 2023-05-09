@@ -23,8 +23,11 @@ function Item({
 
   useEffect(() => {
     setSelected(id === currentSelected);
-  }, [id, currentSelected]);
+  }, [currentSelected]);
 
+  useEffect(() => {
+    if (id === "home") setSelected(true);
+  }, []);
   return (
     <li className="menu-item" {...props}>
       <Link href={to} onClick={(e: any) => (onClick ? onClick(e) : null)}>

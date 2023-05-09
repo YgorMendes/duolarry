@@ -49,7 +49,7 @@ export function UserFeedbackProvider({
       value={{ setMessage, setType, setIsOpen, isOpen }}
       {...props}
     >
-      <Alert message={message} type={type} isOpen={isOpen}></Alert>
+      <Alert message={message} type={type} isOpen={isOpen} />
 
       {children}
     </UserFeedbackContext.Provider>
