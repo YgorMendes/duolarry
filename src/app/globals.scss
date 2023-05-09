@@ -7,11 +7,13 @@ body {
   font-family: Inter;
   background-color: var(--bg-content-dark);
   color: var(--white-100);
+  overflow: hidden !important;
 }
 
 :root {
   --white-100: #fff;
   --white-200: #c1c1c1;
+  --color-dark-100: #666666;
   --bg-dark: #2c2c2c;
   --bg-content-dark: #1e1e1e;
   --bg-dark-hover: #444444;
@@ -23,6 +25,7 @@ body {
 .layout {
   display: flex;
   flex-direction: row;
+  overflow: hidden !important;
 }
 
 .contant {

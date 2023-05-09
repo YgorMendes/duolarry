@@ -1,0 +1,38 @@
+.menu-item {
+  height: 40px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  white-space: nowrap;
+
+  span {
+    cursor: pointer;
+    margin-right: 12px;
+
+    &.is-selected {
+      color: #be9cab;
+    }
+  }
+
+  a {
+    color: var(--color-dark-100);
+    text-decoration: none;
+  }
+
+  &:hover {
+    a {
+      color: var(--bg-content-dark);
+    }
+  }
+
+  .menu-item_line {
+    margin-top: 4px;
+    width: calc(100% + 8px);
+    height: 2px;
+
+    &.is-selected {
+      background: var(--primary);
+    }
+  }
+}

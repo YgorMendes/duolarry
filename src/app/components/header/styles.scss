@@ -3,9 +3,11 @@
   height: 64px;
   padding: 0 24px;
   display: flex;
-  justify-content: start;
+  justify-content: space-between;
   align-items: center;
   background-color: var(--bg-dark);
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+  position: relative;
 
   .logo {
     font-size: 18px;
@@ -14,5 +16,33 @@
     background: var(--primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+  }
+
+  .header_menu-options {
+    background-color: var(--white-100);
+    width: 65%;
+    height: 100vh;
+    position: absolute;
+    right: 0;
+    top: 0;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all 0.3s ease-in-out;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+
+    &.is-visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  .header_menu-burger {
+    cursor: pointer;
+    z-index: 2;
+    color: var(--white-100);
+
+    &.is-visible {
+      color: var(--bg-dark);
+    }
   }
 }

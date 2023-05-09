@@ -11,10 +11,12 @@
   box-shadow: 0px 2px 8px 0px #00000090;
 
   opacity: 0;
-  transition: opacity 1s;
+  transition: all 0.3s ease-in-out;
+  transform: translateX(100%);
 
   &.is-visible {
     opacity: 1;
+    transform: translateX(0);
   }
 
   .alert_message {
