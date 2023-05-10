@@ -1,3 +1,12 @@
+@keyframes leaves {
+  0% {
+    transform: scale(0.6);
+  }
+  100% {
+    transform: scale(1.45);
+  }
+}
+
 .home {
   display: flex;
   flex-direction: column;
@@ -46,15 +55,35 @@
     justify-content: center;
     align-items: center;
     background-color: var(--bg-dark);
+    position: relative;
+
+    &:nth-child(3) {
+      &.is-rec {
+        animation: leaves2 0.4s ease-in-out infinite alternate;
+        -webkit-animation: leaves2 0.4s ease-in-out infinite alternate;
+      }
+    }
 
     .home_button-audio {
       width: 48px;
       height: 48px;
       border-radius: 50%;
       background: red;
+      z-index: 2;
+    }
 
-      &:active {
-        box-shadow: 0px 0px 20px 0px rgba(237, 40, 40, 1);
+    .home_audio-rec {
+      width: 44px;
+      height: 44px;
+      position: absolute;
+      left: calc(50% - 22.9px);
+      top: calc(25% + 2.7px);
+      border-radius: 50%;
+      border: solid 0.6px #c3c3c3;
+
+      &.is-rec {
+        animation: leaves 0.3s ease-in-out infinite alternate;
+        -webkit-animation: leaves 0.3s ease-in-out infinite alternate;
       }
     }
   }

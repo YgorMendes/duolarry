@@ -7,12 +7,19 @@ interface IPhraseItem extends React.HTMLAttributes<HTMLLIElement> {
   text: string;
 }
 
-function PhraseItem({ text, priority, ...props }: IPhraseItem) {
+function PhraseItem({ text, onClick, priority, ...props }: IPhraseItem) {
   return (
     <li {...props} className="phrase-item" {...props}>
       <div>
         <div className={`phrase-item_priority is-${priority}`} />
-        <div>{text}</div>
+        <div
+        className="phrase-item_text"
+          onClick={(e: any) => {
+            if (onClick) onClick(e);
+          }}
+        >
+          {text}
+        </div>
       </div>
 
       <MoreOutlined />

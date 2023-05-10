@@ -27,6 +27,7 @@
     top: 0;
     opacity: 1;
     overflow: hidden;
+    z-index: 3;
 
     transition: all 0.3s ease-in-out;
     box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
@@ -40,7 +41,7 @@
   .header_menu-burger {
     -webkit-tap-highlight-color: transparent;
     cursor: pointer;
-    z-index: 2;
+    z-index: 4;
     color: var(--white-100);
 
     &.is-visible {

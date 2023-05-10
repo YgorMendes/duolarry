@@ -7,6 +7,7 @@ import "./styles.scss";
 import dynamic from "next/dynamic";
 
 function Home() {
+  const [isRec, setIsRec] = useState<boolean>(false);
   const [phrase, setPhrase] = useState<string>("");
   const [priority, setPriority] = useState<string>("");
 
@@ -47,16 +48,21 @@ function Home() {
   recognition.lang = "en-US";
 
   function onRecognitionStart() {
+    setIsRec(true);
     recognition.start();
-  }
-
-  function onRecognitionStop() {
-    recognition.stop();
   }
 
   recognition.addEventListener("result", (event) => {
     const result = event.results[0][0].transcript;
     setPhrase(result);
+    setIsRec(false);
+  });
+
+  recognition.addEventListener("audioend", (event) => {
+    setIsRec(false);
+  });
+  recognition.addEventListener("error", (event) => {
+    setIsRec(false);
   });
 
   return (
@@ -125,12 +131,12 @@ function Home() {
 
       <div className="home_audio">
         <button
-          className="home_button-audio btn"
-          onMouseDown={onRecognitionStart}
-          onMouseUp={onRecognitionStop}
+          className={`home_button-audio btn  ${isRec ? "is-rec" : ""}`}
+          onClick={onRecognitionStart}
         >
           <AudioFilled />
         </button>
+        <div className={`home_audio-rec  ${isRec ? "is-rec" : ""}`}></div>
       </div>
     </main>
   );

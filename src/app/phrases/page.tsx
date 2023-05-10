@@ -10,8 +10,10 @@ import {
   CaretRightOutlined,
 } from "@ant-design/icons";
 import dynamic from "next/dynamic";
+import { useSpeechContext } from "../provider/use-speech/use-speech";
 
 function Phrases() {
+  const { speek } = useSpeechContext();
   const phrasesStore = localStorage.getItem("phrases");
   const phrases = JSON.parse(phrasesStore || "[]");
 
@@ -27,7 +29,13 @@ function Phrases() {
           <ul className="phrases_list">
             {phrases?.map(({ text, priority, id }: IPhrase) => {
               return (
-                <PharaseItem key={id} text={text} priority={priority} id={id} />
+                <PharaseItem
+                  onClick={() => speek(text)}
+                  key={id}
+                  text={text}
+                  priority={priority}
+                  id={id}
+                />
               );
             })}
           </ul>

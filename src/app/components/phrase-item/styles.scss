@@ -13,6 +13,10 @@
     align-items: center;
   }
 
+  .phrase-item_text {
+    cursor: pointer;
+  }
+
   .phrase-item_priority {
     width: 4px;
     min-width: 4px;

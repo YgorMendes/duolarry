@@ -1,5 +1,9 @@
 import { Header } from "./components";
 import "./globals.scss";
+import {
+  UseSpeechContext,
+  UseSpeechProvider,
+} from "./provider/use-speech/use-speech";
 import { UserFeedbackProvider } from "./provider/user-feedback/user-feedback";
 
 export const metadata = {
@@ -15,10 +19,12 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <UserFeedbackProvider>
-          <Header />
-          <div className="layout">{children}</div>
-        </UserFeedbackProvider>
+        <UseSpeechProvider>
+          <UserFeedbackProvider>
+            <Header />
+            <div className="layout">{children}</div>
+          </UserFeedbackProvider>
+        </UseSpeechProvider>
       </body>
     </html>
   );
