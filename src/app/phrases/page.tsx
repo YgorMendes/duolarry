@@ -9,8 +9,9 @@ import {
   CaretLeftOutlined,
   CaretRightOutlined,
 } from "@ant-design/icons";
+import dynamic from "next/dynamic";
 
-export default function Phrases() {
+function Phrases() {
   const phrasesStore = localStorage.getItem("phrases");
   const phrases = JSON.parse(phrasesStore || "[]");
 
@@ -47,3 +48,7 @@ export default function Phrases() {
     </Suspense>
   );
 }
+
+export default dynamic(() => Promise.resolve(Phrases), {
+  ssr: false,
+});
