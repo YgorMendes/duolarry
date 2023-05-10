@@ -20,7 +20,11 @@ function Home() {
     const currentPhrases: any = JSON.parse(currentPhrasesStore);
 
     const priorityForm = e.target.priority.value;
-    const itemPhrase = { text: phraseDebounced, priority: priorityForm };
+    const itemPhrase = {
+      text: phraseDebounced,
+      priority: priorityForm,
+      id: String(Date.now() * Math.random()),
+    };
 
     if (currentPhrases) {
       localStorage.setItem(
@@ -75,7 +79,7 @@ function Home() {
               type="radio"
               name="priority"
               id="low"
-              value={0}
+              value="low"
               onChange={(e) => {
                 setPriority(e.target.value);
               }}
@@ -87,7 +91,7 @@ function Home() {
               type="radio"
               name="priority"
               id="medium"
-              value={1}
+              value="medium"
               onChange={(e) => {
                 setPriority(e.target.value);
               }}
@@ -99,7 +103,7 @@ function Home() {
               type="radio"
               name="priority"
               id="hight"
-              value={2}
+              value="hight"
               onChange={(e) => {
                 setPriority(e.target.value);
               }}

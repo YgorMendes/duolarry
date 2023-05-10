@@ -1,0 +1,37 @@
+.phrase-item {
+  width: auto;
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+
+  div {
+    min-height: 40px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .phrase-item_priority {
+    width: 4px;
+    min-width: 4px;
+    height: 100%;
+    margin-right: 12px;
+
+    &.is-low {
+      background-color: #45c4b0;
+    }
+    &.is-medium {
+      background-color: #e7c29a;
+    }
+    &.is-hight {
+      background-color: #5e42d3;
+    }
+  }
+
+  span {
+    cursor: pointer;
+    transform: scale(1.4);
+  }
+}

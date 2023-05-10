@@ -38,6 +38,7 @@
   }
 
   .header_menu-burger {
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     z-index: 2;
     color: var(--white-100);

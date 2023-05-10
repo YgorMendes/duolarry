@@ -19,14 +19,23 @@ function Item({
   currentSelected,
   ...props
 }: IItem) {
-  const [selected, setSelected] = useState<boolean>();
+  const [selected, setSelected] = useState<boolean>(false);
 
   useEffect(() => {
     setSelected(id === currentSelected);
   }, [currentSelected]);
 
   useEffect(() => {
-    if (id === "home") setSelected(true);
+    if (window.location.href.includes("phrases") && id === "phrases")
+      setSelected(true);
+    if (window.location.href.includes("learning") && id === "learning")
+      setSelected(true);
+    if (
+      !window.location.href.includes("learning") &&
+      !window.location.href.includes("phrases") &&
+      id === "home"
+    )
+      setSelected(true);
   }, []);
   return (
     <li className="menu-item" {...props}>

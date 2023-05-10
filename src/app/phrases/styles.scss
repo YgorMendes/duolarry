@@ -1,0 +1,28 @@
+.phrases {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .phrases_list {
+    list-style: none;
+    padding: 0;
+  }
+
+  .phrases_pagination {
+    height: 100px;
+    width: auto;
+    margin-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    background-color: var(--bg-dark);
+
+    .phrases_pagination_btn {
+      white-space: nowrap;
+      width: min-content;
+      padding: 0 12px;
+    }
+  }
+}
