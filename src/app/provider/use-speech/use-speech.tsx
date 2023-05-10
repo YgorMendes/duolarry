@@ -1,8 +1,6 @@
 "use client";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-import "./styles.scss";
-
 interface IUseSpeechProvider {
   children: JSX.Element[] | JSX.Element;
 }
