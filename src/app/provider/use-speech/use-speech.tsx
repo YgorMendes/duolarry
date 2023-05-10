@@ -1,5 +1,5 @@
 "use client";
-import React, { createContext, useContext, useEffect } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
 
 import "./styles.scss";
 
@@ -14,8 +14,15 @@ interface IUseSpeechContext {
 export const UseSpeechContext = createContext<IUseSpeechContext | null>(null);
 
 export function UseSpeechProvider({ children, ...props }: IUseSpeechProvider) {
-  const recognition = new webkitSpeechRecognition() || new SpeechRecognition();
-  recognition.lang = "en-US";
+  const [recognition, setRecognition] = useState<any>();
+
+  useEffect(() => {
+    const createRecognition =
+      new webkitSpeechRecognition() || new SpeechRecognition();
+    createRecognition.lang = "en-US";
+
+    setRecognition(createRecognition);
+  }, []);
 
   function speek(text: string) {
     let voices = window.speechSynthesis.getVoices();
