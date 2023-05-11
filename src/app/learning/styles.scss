@@ -1,0 +1,36 @@
+.motivational {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  height: 0;
+  left: 0;
+  overflow: hidden;
+
+  opacity: 0;
+  transition: all 0.3s ease-in-out;
+  z-index: -1;
+
+  &.is-visible {
+    opacity: 1;
+    height: 0;
+    z-index: 8;
+  }
+
+  width: auto;
+  padding: 0 24px;
+
+  span {
+    display: flex;
+    font-weight: 600;
+    font-size: 50px;
+  }
+
+  .motivational_phrase {
+    margin: 0 !important;
+    color: #fff;
+    font-size: 32px;
+    text-align: center;
+  }
+}

@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 
 import "./styles.scss";
-import { MenuOutlined } from "@ant-design/icons";
+import { CloseCircleOutlined, MenuOutlined } from "@ant-design/icons";
 import { Menu } from "../menu/menu";
 
 export function Header() {
@@ -14,11 +14,17 @@ export function Header() {
       <div className={`header_menu-options ${isVisible ? "is-visible" : ""}`}>
         <Menu closeMenu={() => setIsVisible(false)} />
       </div>
-
-      <MenuOutlined
-        onClick={() => setIsVisible((currentValue) => !currentValue)}
-        className={`header_menu-burger ${isVisible ? "is-visible" : ""}`}
-      />
+      {isVisible ? (
+        <CloseCircleOutlined
+          onClick={() => setIsVisible(false)}
+          className={`header_menu-burger ${isVisible ? "is-visible" : ""}`}
+        />
+      ) : (
+        <MenuOutlined
+          onClick={() => setIsVisible(true)}
+          className={`header_menu-burger ${isVisible ? "is-visible" : ""}`}
+        />
+      )}
     </header>
   );
 }
