@@ -12,7 +12,7 @@ export function Header() {
     <header className="header">
       <span className="logo">Duolarry</span>
       <div className={`header_menu-options ${isVisible ? "is-visible" : ""}`}>
-        <Menu />
+        <Menu closeMenu={() => setIsVisible(false)} />
       </div>
 
       <MenuOutlined

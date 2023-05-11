@@ -8,7 +8,10 @@ import {
 } from "@ant-design/icons";
 import Item from "./item/items";
 
-export function Menu() {
+interface IMenu {
+  closeMenu: () => void;
+}
+export function Menu({ closeMenu }: IMenu) {
   const [currentSelected, setCurrentSelected] = useState<string>("");
 
   return (
@@ -16,7 +19,10 @@ export function Menu() {
       <Item
         to="/"
         text="Criar frases"
-        onClick={() => setCurrentSelected("home")}
+        onClick={() => {
+          setCurrentSelected("home");
+          closeMenu();
+        }}
         icon={
           <PlusSquareOutlined
             className={`icon ${
@@ -30,7 +36,10 @@ export function Menu() {
       <Item
         to="/phrases"
         text="Frases"
-        onClick={() => setCurrentSelected("phrases")}
+        onClick={() => {
+          setCurrentSelected("phrases");
+          closeMenu();
+        }}
         icon={
           <MessageOutlined
             className={`icon ${
@@ -44,7 +53,10 @@ export function Menu() {
       <Item
         to="/learning"
         text="Estudar"
-        onClick={() => setCurrentSelected("learning")}
+        onClick={() => {
+          setCurrentSelected("learning");
+          closeMenu();
+        }}
         icon={
           <BookOutlined
             className={`icon ${

@@ -12,14 +12,10 @@ interface IUseSpeechContext {
 export const UseSpeechContext = createContext<IUseSpeechContext | null>(null);
 
 export function UseSpeechProvider({ children, ...props }: IUseSpeechProvider) {
-  const [recognition, setRecognition] = useState<any>();
-
   useEffect(() => {
-    const createRecognition =
+    const recognition =
       new webkitSpeechRecognition() || new SpeechRecognition();
-    createRecognition.lang = "en-US";
-
-    setRecognition(createRecognition);
+    recognition.lang = "en-US";
   }, []);
 
   function speek(text: string) {
