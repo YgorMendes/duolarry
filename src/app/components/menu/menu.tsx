@@ -8,10 +8,7 @@ import {
 } from "@ant-design/icons";
 import Item from "./item/items";
 
-interface IMenu {
-  closeMenu: () => void;
-}
-export function Menu({ closeMenu }: IMenu) {
+export function Menu({ closeMenu }: any) {
   const [currentSelected, setCurrentSelected] = useState<string>("");
 
   return (
