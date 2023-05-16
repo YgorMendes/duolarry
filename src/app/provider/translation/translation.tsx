@@ -21,10 +21,7 @@ interface ITranslationContext {
 
 export const UseTranslation = createContext<ITranslationContext | null>(null);
 
-export function UseTranslationProvider({
-  children,
-  ...props
-}: ITranslationProvider) {
+function UseTranslationProvider({ children, ...props }: ITranslationProvider) {
   const translationsParse = JSON.parse(
     localStorage.getItem("translations") || "[]"
   );
