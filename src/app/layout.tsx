@@ -1,9 +1,6 @@
 import { Header } from "./components";
 import "./globals.scss";
-import {
-  UseTranslation,
-  UseTranslationProvider,
-} from "./provider/translation/translation";
+import UseTranslationProvider from "./provider/translation/translation";
 import {
   UseSpeechContext,
   UseSpeechProvider,
