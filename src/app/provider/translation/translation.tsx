@@ -1,4 +1,5 @@
 "use client";
+import dynamic from "next/dynamic";
 import React, {
   Dispatch,
   SetStateAction,
@@ -68,3 +69,7 @@ export function useTranslation(): ITranslationContext {
 
   return context;
 }
+
+export default dynamic(() => Promise.resolve(UseTranslationProvider), {
+  ssr: false,
+});
