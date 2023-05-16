@@ -1,0 +1,61 @@
+.ds-tooltip-container {
+  position: relative;
+
+  .ds-tooltip-contant {
+    min-width: 12px;
+    text-align: center;
+    padding: 6px 8px;
+    border-radius: 2px;
+    width: max-content;
+    background-color: blanchedalmond;
+    color: rgb(58, 44, 44);
+    height: 16px !important;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.4s ease-in-out, opacity 0.4s ease-in-out;
+    position: absolute;
+    z-index: 2;
+    display: none;
+    line-height: normal;
+
+    &.is-active {
+      display: block;
+    }
+
+    p {
+      margin: 4px;
+      text-decoration: underline;
+    }
+
+    &.is-visible {
+      visibility: visible;
+      opacity: 1;
+      flex-direction: c;
+    }
+
+    &.is-arrow {
+      .ds-tooltip-contant_arrow {
+        display: block;
+      }
+    }
+
+    &.is-dark {
+      background-color: black;
+      color: #fff;
+      .ds-tooltip-contant_arrow {
+        background-color: black;
+      }
+    }
+
+    .ds-tooltip-contant_arrow {
+      display: none;
+      width: 20px;
+      height: 20px;
+      border-radius: 2px;
+      background-color: blanchedalmond;
+      transform: rotate(45deg);
+      position: absolute;
+      z-index: -1;
+    }
+  }
+}

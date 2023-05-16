@@ -1,6 +1,10 @@
 import { Header } from "./components";
 import "./globals.scss";
 import {
+  UseTranslation,
+  UseTranslationProvider,
+} from "./provider/translation/translation";
+import {
   UseSpeechContext,
   UseSpeechProvider,
 } from "./provider/use-speech/use-speech";
@@ -19,12 +23,14 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body>
-        <UseSpeechProvider>
-          <UserFeedbackProvider>
-            <Header />
-            <div className="layout">{children}</div>
-          </UserFeedbackProvider>
-        </UseSpeechProvider>
+        <UseTranslationProvider>
+          <UseSpeechProvider>
+            <UserFeedbackProvider>
+              <Header />
+              <div className="layout">{children}</div>
+            </UserFeedbackProvider>
+          </UseSpeechProvider>
+        </UseTranslationProvider>
       </body>
     </html>
   );

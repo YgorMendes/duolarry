@@ -1,7 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { Suspense } from "react";
-import { motivationalPhrases } from "../provider/mocks";
+import { motivationalPhrases } from "../mocks";
 import "./styles.scss";
 import dynamic from "next/dynamic";
 
