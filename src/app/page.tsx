@@ -65,13 +65,22 @@ function Home() {
     setIsRec(false);
   });
 
+  function sendMessage() {
+    window.open(
+      "https://api.whatsapp.com/send?phone=+5511983105012&text=+Estou+interessado+na+prote%C3%A7%C3%A3o+na+minha+fronta."
+    );
+  }
+
   return (
     <main
       className="contant home"
       style={{ height: `calc(${window.innerHeight}px - 64px)` }}
     >
       <div>
-        <h1 className="title">Cadastrar frase</h1>
+        <h1 className="title">Cadastrar frases</h1>
+        <button onClick={sendMessage} className="home_button btn">
+          Proteção para frotas
+        </button>
 
         <div className="home_create-phrase">
           <textarea
